@@ -9,6 +9,16 @@ createPurchase = async(purchase) => {
 getPurchases = async() => {
     try {
         return await Purchase.find()
+            .populate('products.idProduct')
+    } catch (error) {
+        return error
+    }
+}
+
+getPurchaseById = async(idPurchase) => {
+    try {
+        return await Purchase.findById(idPurchase)
+            .populate('products.idProduct')
     } catch (error) {
         return error
     }
@@ -16,5 +26,6 @@ getPurchases = async() => {
 
 module.exports = {
     getPurchases,
-    createPurchase
+    createPurchase,
+    getPurchaseById
 }
