@@ -41,6 +41,20 @@ router.get('/search', async(req, res) => {
 })
 
 
+router.get('/searchP', async(req, res) => {
+    try {
+        word = req.query.q
+        word = word.toLowerCase()
+        let products = await productService.getSearchsProducts(word)
+        return res.status(200).json({
+            products
+        })
+    } catch (error) {
+        return res.status(400).json({ Message: "error" })
+    }
+})
+
+
 router.get('/:id', async(req, res) => {
     try {
         let products = await productService.getProductById(req.params.id)
@@ -108,4 +122,8 @@ router.put('/:id', async(req, res) => {
         return res.status(400).json({ Message: "error" })
     }
 })
+
+
+
+
 module.exports = router;

@@ -1,5 +1,6 @@
 const Product = require('../models/product')
 const { getFoodType } = require('../utils/typefood.js')
+const product = require('../models/product')
 getProducts = async() => {
     try {
         return await Product.find()
@@ -38,6 +39,19 @@ getProductByType = async(param) => {
     return await Product.find({ type: typeNumber })
 }
 
+getSearchsProducts = async(param) => {
+    let products = await getProducts()
+    for (let index = 0; index < products.length; index++) {
+        const element = products[index];
+        productLineal = element.name.toLowerCase()
+        if (productLineal.indexOf(param) == -1) {
+            console.log(productLineal);
+            products.splice(index, 1);
+        }
+    }
+    return products
+}
+
 module.exports = {
     getProductByName,
     getProductByCompany,
@@ -45,5 +59,6 @@ module.exports = {
     getProductById,
     updateProduct,
     createProduct,
-    getProducts
+    getProducts,
+    getSearchsProducts
 }
