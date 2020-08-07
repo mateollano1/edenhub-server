@@ -1,24 +1,19 @@
-version: "3.7"
-services:
-  mongo-image:
-    image: mongo:3.6.18
-    restart: always
-    volumes:
-        - /data/db:/data/db
-    networks: 
-        - backend
-  node:
-    build: 
-        context: .
-    restart: always
-    environment: 
-        - MONGODB=mongodb://mongo-image/food
-    links: 
-        - mongo-image
-    ports: 
-        - "5200:3000"
-    networks:
-        - backend
+- backend
+nodejs:
+  build:
+    context: .
+  restart: always
+  environment:
+    - MONGODB=mongodb://mongo-image/food
+#      - VIRTUAL_HOST=edenhub.co
+#      - VIRTUAL_PORT=3000
+#      - LETSENCRYPT_HOST=edenhub.co
+  links:
+    - mongo-image
+  ports:
+    - "5200:3000"
+  networks:
+    - backend
 networks:
-    backend:
-      driver: bridge
+backend:
+ driver: bridge

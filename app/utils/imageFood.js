@@ -11,11 +11,11 @@ getFoodImage = (type) => {
         case "mexicana":
             return "assets/imgs/gourmet.jpg"
         case "otros":
-            return "assets/imgs/gourmet.jpg"
+            return "assets/imgs/otros_port.jpg"
         case "promociones":
-            return "assets/imgs/gourmet.jpg"
+            return "assets/imgs/sale.jpg"
         case "regalos":
-            return "assets/imgs/gourmet.jpg"
+            return "assets/imgs/gp.jpg"
         default:
             return "assets/imgs/gourmet.jpg"
     }
