@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const fs = require('fs');
 
 const purchaseService = require('../../services/purchaseService')
 const { getFoodImage } = require('../../utils/imageFood');
@@ -9,6 +9,11 @@ const mailService = require('../../services/mailService')
 router.post('/', async(req, res) => {
     try {
         let purchase = req.body
+        friendlyId = fs.readFileSync('./app/utils/friendlyId.txt', 'utf8')
+        friendlyId = parseInt(friendlyId) + 1
+        fs.writeFileSync('./app/utils/friendlyId.txt', friendlyId)
+        friendlyId = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 1) + friendlyId
+        purchase.friendlyId = friendlyId
         let newPurchase = await purchaseService.createPurchase(purchase)
         mailService.sendMail(newPurchase)
         return res.status(200).json({

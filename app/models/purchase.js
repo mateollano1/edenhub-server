@@ -8,8 +8,9 @@ const purchase = new Schema({
             ammount: { type: String }
         }]
     },
+    friendlyId: { type: String },
     totalPrice: { type: String },
-    Note: { type: String },
+    note: { type: String },
     telephone: { type: String },
     name: { type: String },
     location: { type: String },

@@ -4,7 +4,7 @@ getFoodType = (type) => {
             return "0"
         case "hamburguesas":
             return "1"
-        case "gourmet":
+        case "arepas":
             return "2"
         case "alitas":
             return "3"
