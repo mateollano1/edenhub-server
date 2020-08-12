@@ -81,6 +81,7 @@ router.post('', async(req, res) => {
 
 router.post('/bill', async(req, res) => {
     try {
+        deliveryPrice = 2000
         finalPrice = 0
         console.log(req.body);
         let cartProduct = req.body
@@ -98,14 +99,28 @@ router.post('/bill', async(req, res) => {
             bill.push({
                 "product": product,
                 "ammount": res[1],
-                "price": price
+                "price": price 
             })
-            finalPrice = price + finalPrice
+            finalPrice = price + finalPrice 
         }
-        return res.status(200).json({
-            'finalPrice': finalPrice,
-            'bill': bill
-        })
+        if (cartProduct.length > 0) {
+            let delivery ={
+                name: "Entrega a Domicilio",
+                price: deliveryPrice,
+                type: "-1"
+
+            }
+            bill.push({
+                "product": delivery,
+                "ammount": 1,
+                "price": deliveryPrice,
+            })
+            finalPrice = (deliveryPrice + finalPrice )
+            return res.status(200).json({
+                'finalPrice': finalPrice.toString(),
+                'bill': bill 
+            })
+        }
     } catch (error) {
         return res.status(400).json({ Message: "error" })
     }
