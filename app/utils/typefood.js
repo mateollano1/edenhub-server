@@ -10,7 +10,7 @@ getFoodType = (type) => {
             return "3"
         case "mexicana":
             return "4"
-        case "otros":
+        case "postres":
             return "5"
         case "promociones":
             return "6"
