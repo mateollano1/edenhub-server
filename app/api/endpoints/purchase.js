@@ -29,6 +29,7 @@ router.get('/:id', async(req, res) => {
     try {
         let id = req.params.id
         let order = await purchaseService.getPurchaseById(id)
+        
         return res.status(200).json({
             order
         })

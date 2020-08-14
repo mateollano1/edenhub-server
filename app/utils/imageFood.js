@@ -4,13 +4,13 @@ getFoodImage = (type) => {
             return "assets/imgs/pizza.jpg"
         case "hamburguesas":
             return "assets/imgs/hamburguer.png"
-        case "gourmet":
+        case "arepas":
             return "assets/imgs/gourmet.jpg"
         case "alitas":
-            return "assets/imgs/gourmet.jpg"
+            return "assets/imgs/alitas1_opt.jpg"
         case "mexicana":
             return "assets/imgs/gourmet.jpg"
-        case "otros":
+        case "postres":
             return "assets/imgs/otros_port.jpg"
         case "promociones":
             return "assets/imgs/sale.jpg"
