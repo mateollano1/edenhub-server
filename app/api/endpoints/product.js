@@ -88,18 +88,21 @@ router.post('/bill', async(req, res) => {
         let bill = []
         for (let index = 0; index < cartProduct.length; index++) {
             const element = cartProduct[index];
-            let res = element.split(" X")
-            if (res[0] == null || res[1] == null) {
-                return
-            }
-            productId = res[0]
-            ammount = res[1]
+            // let res = element.split(" X")
+            // if (res[0] == null || res[1] == null) {
+            //     return
+            // }
+            // productId = res[0]
+            // ammount = res[1]
+            ammount = element.units
+            productId = element.idProduct
             let product = await productService.getProductById(productId)
-            let price = product.price * res[1]
+            let price = product.price * ammount
             bill.push({
                 "product": product,
-                "ammount": res[1],
-                "price": price 
+                "ammount": ammount,
+                "price": price,
+                "items": element.items
             })
             finalPrice = price + finalPrice 
         }

@@ -8,6 +8,11 @@ const product = new Schema({
     description: { type: String },
     Ingredients: { type: [String] },
     avalaible: { type: Boolean },
+    letSelectedItems: {type: Number},
+    items:[{
+        name: {type: String},
+        url: { type: String }
+    }],
     type: { type: String },
     images: [{
         url: { type: String }

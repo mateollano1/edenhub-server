@@ -5,7 +5,8 @@ const purchase = new Schema({
     products: {
         type: [{
             idProduct: { type: Schema.Types.ObjectId, ref: "Product" },
-            ammount: { type: String }
+            ammount: { type: String },
+            items:{type: [String]}
         }]
     },
     friendlyId: { type: String },
