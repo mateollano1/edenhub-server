@@ -1,6 +1,6 @@
 getFoodType = (type) => {
     switch (type) {
-        case "pizzas":
+        case "emplatanados":
             return "0"
         case "hamburguesas":
             return "1"

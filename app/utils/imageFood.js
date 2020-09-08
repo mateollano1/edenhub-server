@@ -1,6 +1,6 @@
 getFoodImage = (type) => {
     switch (type) {
-        case "pizzas":
+        case "emplatanados":
             return "assets/imgs/pizza.jpg"
         case "hamburguesas":
             return "assets/imgs/hamburguer.png"
