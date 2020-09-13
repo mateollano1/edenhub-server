@@ -81,7 +81,7 @@ router.post('', async(req, res) => {
 
 router.post('/bill', async(req, res) => {
     try {
-        deliveryPrice = 3000
+        deliveryPrice = 0
         finalPrice = 0
         console.log(req.body);
         let cartProduct = req.body
